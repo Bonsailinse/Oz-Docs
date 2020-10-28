@@ -25,3 +25,8 @@ jobs:
     - name: Build
       run: npm run build --if-present
       working-directory: docs
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Dist
+        path: docs/src/.vuepress/dist
