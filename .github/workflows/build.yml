@@ -25,8 +25,13 @@ jobs:
     - name: Build
       run: npm run build --if-present
       working-directory: docs
-    - name: Archive artifacts
-      uses: actions/upload-artifact@v2
+    - name: GitHub Pages Deploy
+      uses: appleboy/gh-pages-action@v0.0.2
       with:
-        name: Dist
-        path: docs/src/.vuepress/dist
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        remote_url: https://github.com/bonsailinse/oz-docs.git
+        target_branch: gh-pages
+        pages_directory: docs/src/.vuepress/dist
+        target_directory: /
+    
